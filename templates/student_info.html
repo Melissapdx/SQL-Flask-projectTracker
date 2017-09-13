@@ -7,5 +7,12 @@
     <h1>{{ first_name}} {{last_name}}</h1>
 
     <p>Github Account: {{github}}</p>
+    <ul>
+        {%for index in grade_info%}
+<!--         <li>Project Title: {{index[0]}}</li> -->
+<li>Project Title: <a href="/project?project_title={{index[0]}}">{{index[0]}}</a></li>
+        <li>Grade: {{index[1]}}</li>
+        {%endfor%}
+    </ul>
 </body>
 </html>

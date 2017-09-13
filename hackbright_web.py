@@ -14,13 +14,21 @@ def get_student():
     github = request.args.get('github')
 
     first_name, last_name, github = hackbright.get_student_by_github(github)
-
+    grade_info = hackbright.get_grades_by_github(github)
     html = render_template("student_info.html",
                            first_name=first_name,
                            last_name=last_name,
-                           github=github)
+                           github=github,
+                           grade_info=grade_info)
 
     return html
+
+@app.route("/project")
+def get_project_info():
+    """ Lists project information given a project title from student info page """
+    project=request.args.get('project_title')
+    project_info = hackbright.get_project_by_title(project)
+    return render_template("project_info.html", project=project_info)
 
 
 @app.route("/student-search")
